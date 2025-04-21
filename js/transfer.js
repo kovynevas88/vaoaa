@@ -3,10 +3,10 @@ new TransferElements(
     {
       sourceElement: document.querySelector('.header__contacts'),
       breakpoints: {
-        870: {
-          targetElement: document.querySelector('.nav'),
-          targetPosition: 0
+        1024: {
+          targetElement: document.querySelector('.header__nav'),
+          targetPosition: 1
         }
       }
-    }
+    },
 );

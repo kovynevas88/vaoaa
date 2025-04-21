@@ -1,65 +1,76 @@
-// Добавляем в burger.js или создаем новый файл menu-accessibility.js
 document.addEventListener('DOMContentLoaded', function() {
-    const dropdowns = document.querySelectorAll('.dropdown');
+	const burger = document.querySelector('.header__burger');
+	const nav = document.querySelector('.header__nav');
+	const body = document.body;
+	const dropdowns = document.querySelectorAll('.dropdown');
+	const overlay = document.querySelector('.header__overlay');
 
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.header__nav__link');
-        const menu = dropdown.querySelector('.dropdown__content');
+	// Функция переключения меню
+	function toggleMenu() {
+	  burger.classList.toggle('active');
+	  nav.classList.toggle('active');
+	  body.classList.toggle('lock');
+	  burger.setAttribute('aria-expanded', burger.classList.contains('active'));
+	  overlay.classList.toggle('active');
 
-        // Обработчик для клавиатуры
-        link.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.keyCode === 13) {
-                e.preventDefault();
-                toggleMenu();
-            }
-            if (e.key === 'Escape' || e.keyCode === 27) {
-                closeMenu();
-            }
-        });
+	  // Закрываем все открытые dropdown при закрытии меню
+	  if (!nav.classList.contains('active')) {
+		dropdowns.forEach(dropdown => {
+		  dropdown.setAttribute('aria-expanded', 'false');
+		  const content = dropdown.querySelector('.dropdown__content');
+		  if (content) content.style.display = 'none';
+		});
+	  }
+	}
 
-        // Обработчик для мыши
-        dropdown.addEventListener('click', function(e) {
-            e.preventDefault();
-            toggleMenu();
-        });
+	// Обработчик клика по бургеру
+	burger.addEventListener('click', toggleMenu);
+	overlay.addEventListener('click', toggleMenu);
 
-        // Закрытие при потере фокуса
-        dropdown.addEventListener('focusout', function(e) {
-            if (!dropdown.contains(e.relatedTarget)) {
-                closeMenu();
-            }
-        });
+	// Обработчики для dropdown меню
+	dropdowns.forEach(dropdown => {
+	  const toggle = dropdown.querySelector('.header__nav__link');
 
-        function toggleMenu() {
-			const isOpen = menu.classList.contains('active');
-			closeAllMenus();
-			if (!isOpen) {
-				menu.classList.add('active');
-				dropdown.setAttribute('aria-expanded', 'true');
-				menu.querySelector('a').focus();
+	  if (toggle) {
+		toggle.addEventListener('click', function(e) {
+		  if (window.innerWidth <= 1024) {
+			e.preventDefault();
+			const isExpanded = dropdown.getAttribute('aria-expanded') === 'true';
+			dropdown.setAttribute('aria-expanded', !isExpanded);
+
+			const content = dropdown.querySelector('.dropdown__content');
+			if (content) {
+			  content.style.display = isExpanded ? 'none' : 'block';
 			}
-		}
-
-        function closeMenu() {
-            menu.classList.remove('active');
-            dropdown.setAttribute('aria-expanded', 'false');
-        }
-    });
-
-    function closeAllMenus() {
-        dropdowns.forEach(dropdown => {
-            dropdown.querySelector('.dropdown__content').classList.remove('active');
-            dropdown.setAttribute('aria-expanded', 'false');
-        });
-    }
-
-    // Закрытие меню при клике вне области
-    document.addEventListener('click', function(e) {
-		const isClickInside = dropdown.contains(e.target) ||
-							 e.target.closest('.dropdown__content');
-
-		if (!isClickInside) {
-			closeAllMenus();
-		}
+		  }
+		});
+	  }
 	});
-});
+
+	// Закрытие меню при клике на ссылку (кроме dropdown)
+	document.querySelectorAll('.header__nav__link').forEach(link => {
+	  if (!link.closest('.dropdown')) {
+		link.addEventListener('click', () => {
+		  if (window.innerWidth <= 1024) {
+			toggleMenu();
+		  }
+		});
+	  }
+	});
+
+	// Закрытие меню при клике вне области
+	document.addEventListener('click', (e) => {
+	  if (!e.target.closest('.header__burger') &&
+		  !e.target.closest('.header__nav') &&
+		  nav.classList.contains('active')) {
+		toggleMenu();
+	  }
+	});
+
+	// Закрытие меню при ресайзе окна
+	window.addEventListener('resize', () => {
+	  if (window.innerWidth > 1024 && nav.classList.contains('active')) {
+		toggleMenu();
+	  }
+	});
+  });
