@@ -2,25 +2,25 @@
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 1rem;
 	border: 1px solid var(--accent-text);
-	border-radius: 16px;
-	padding: 16px;
+	border-radius: 1rem;
+	padding: 1rem;
 	box-shadow: var(--box-shadow);
 
 }
 
 .accordion-item {
-	padding: 8px 16px;
+	padding: 0.5rem 1rem;
 	border: 1px solid var(--accent-text);
-	border-radius: 16px;
+	border-radius: 1rem;
 	background-color: var(--white);
 	transition: var(--transition);
 	box-shadow: var(--box-shadow);
 }
 
 .accordion-header {
-	padding: 8px 16px;
+	padding: 0.5rem 1rem;
 	border: none;
 	width: 100%;
 	text-align: left;
@@ -28,11 +28,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: clamp(16px, 1.5vw, 20px);
+	font-size: clamp(1rem, 1.5vw, 1.5rem);
 	font-weight: 700;
 	transition: var(--transition);
 	background-color: var(--white);
-	border-radius: 16px;
+	border-radius: 1rem;
 }
 
 .accordion-header:hover {
@@ -47,7 +47,7 @@
 
 .accordion-header::after {
 	content: '+';
-	font-size: 20px;
+	font-size: 1rem;
 	font-weight: 700;
 	transition: var(--transition);
 }
@@ -59,7 +59,7 @@
 .accordion-content {
 	display: flex;
 	flex-direction: column;
-	padding: 0 16px;
+	padding: 0 1rem;
 	max-height: 0;
 	overflow: hidden;
 	transition: var(--transition);
@@ -67,30 +67,30 @@
 }
 
 .accordion-content p {
-	margin: 0 16px 16px 0;
+	margin: 0 1rem 1rem 0;
 	line-height: 1.3;
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     max-width: 100%;
 }
 
 .accordion-content strong {
-    font-size: clamp(16px, 1.5vw, 18px);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
     color: var(--black);
 }
 
 .accordion-content-blog {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
-	margin: 16px 0;
-	padding-left: 16px;
+	gap: 1rem;
+	margin: 1rem 0;
+	padding-left: 1rem;
 }
 
 .accordion-content-blog-text {
 	margin: 0;
-    padding-left: 16px;
+    padding-left: 1rem;
     border-left: 3px dashed var(--accent-text);
-    font-size: clamp(12px, 1.5vw, 16px);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
 .scrollable-content {
@@ -100,22 +100,22 @@
 }
 
 .scrollable-content strong {
-	margin-bottom: 16px;
+	margin-bottom: 1rem;
 }
 
 /* Стили для полосы прокрутки */
 .scrollable-content::-webkit-scrollbar {
-	width: 8px;
+	width: 0.5rem;
 }
 
 .scrollable-content::-webkit-scrollbar-track {
 	background: #f1f1f1;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 }
 
 .scrollable-content::-webkit-scrollbar-thumb {
 	background: #888;
-	border-radius: 4px;
+	border-radius: 0.25rem;
 }
 
 .scrollable-content::-webkit-scrollbar-thumb:hover {
