@@ -1,0 +1,78 @@
+.mobile__container {
+	max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+
+.mobile__app__block {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+    flex: 1;
+    max-width: 600px;
+    background: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.mobile__app__block button {
+	margin-top: auto;
+}
+
+.mobile__app__icon svg {
+    width: 60px;
+    height: 60px;
+    fill: currentColor;
+}
+
+.ios .mobile__app__icon {
+	color: var(--black);
+}
+.android .mobile__app__icon {
+	color: #3ddc84;
+}
+
+.mobile__app__title {
+    font-size: 24px;
+    color: var(--accent-text);
+	font-weight: 700;
+    font-size: clamp(16px, 1.5vw, 20px);
+}
+
+.mobile__installation__steps {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+    text-align: left;
+    padding-left: 32px;
+	list-style-type: none;
+}
+
+.mobile__installation__steps li {
+    font-size: clamp(16px, 1.5vw, 18px);
+	color: var(--black);
+}
+
+/*
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .app-block {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (hover: hover) {
+    .download-btn:hover {
+        transform: translateY(-2px);
+    }
+}
+ */

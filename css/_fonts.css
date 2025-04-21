@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'LiberationSerif';
+    src: url("../fonts/LiberationSerif-Regular.woff2") format("woff2"),
+	 url("../fonts/LiberationSerif-Regular.woff") format("woff");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LiberationSerif';
+    src: url("../fonts/LiberationSerif-Bold.woff2") format("woff2"),
+	 url("../fonts/LiberationSerif-Bold.woff") format("woff");
+    font-display: swap;
+    font-weight: 700;
+    font-style: normal;
+}

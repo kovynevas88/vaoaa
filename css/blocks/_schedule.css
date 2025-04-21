@@ -1,0 +1,110 @@
+.schedule__container {
+    background: var(--white);
+    border-radius: 16px;
+	border: 1px solid var(--accent-text);
+    box-shadow: var(--box-shadow);
+}
+
+.schedule__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+}
+
+.contact-link {
+	padding: 0 8px;
+    text-decoration: underline;
+    cursor: pointer;
+	transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: var(--light-text);
+}
+
+.contact-link:focus-visible {
+    color: var(--light-text);
+	outline: 1px dashed var(--light-text);
+	outline-offset: 1px;
+}
+
+.schedule__tab__button {
+    flex: 1;
+    min-width: 120px;
+    padding: 8px 16px;
+    border: 1px solid var(--accent-text);
+    background-color: var(--white);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: clamp(16px, 1.5vw, 18px);
+	font-weight: 700;
+    border-radius: 8px;
+    text-transform: capitalize;
+	transition: var(--transition);
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.schedule__tab__button:hover {
+	background-color: var(--light-text);
+	color: var(--white);
+}
+
+.schedule__tab__button.active {
+    background-color: var(--accent-text);
+    color: var(--white);
+}
+
+.schedule__content {
+    padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.group-card {
+    display: none;
+    background: var(--white);
+    padding: 16px;
+    border-radius: 16px;
+	border: 1px solid var(--accent-text);
+    box-shadow: var(--box-shadow);
+	transition: var(--transition);
+}
+
+.group-card:hover {
+	background-color: #F5F5F5;
+}
+
+.group-card.active {
+    display: block;
+}
+
+.group-info {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	font-size: clamp(16px, 1.5vw, 18px);
+	color: var(--black);
+}
+
+.group-info span {
+    font-weight: 700;
+	color: var(--accent-text);
+
+}
+
+@media (max-width: 768px) {
+    .schedule__tab__button {
+        flex: 1 1 100%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+
+    .group-info {
+        font-size: 14px;
+    }
+}

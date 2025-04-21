@@ -1,0 +1,16 @@
+:root {
+	/* Fonts */
+	--font-family: 'LiberationSerif', sans-serif;
+
+	/* Colors */
+	--black: #000000;
+	--white: #FFFFFF;
+	--gray: #EAECF0;
+	--accent-text: #113478;
+	--light-text: #3172B9;
+
+    --container-width: 1440px;
+    --container-offset: 15px;
+	--transition: all 0.3s ease-in-out;
+	--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}

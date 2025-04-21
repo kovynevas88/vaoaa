@@ -1,0 +1,85 @@
+/* global */
+@import url("_normalize.css");
+@import url("_fonts.css");
+@import url("_reset.css");
+@import url("_vars.css");
+
+/* blocks */
+@import url("blocks/_header.css");
+@import url("blocks/_logo.css");
+@import url("blocks/_nav.css");
+@import url("blocks/_hero.css");
+@import url("blocks/_news.css");
+@import url("blocks/_schedule.css");
+@import url("blocks/_mobile.css");
+@import url("blocks/_beginner.css");
+@import url("blocks/_gallery.css");
+@import url("blocks/_documents.css");
+
+/* styles */
+section:not(:last-child) {
+	margin-bottom: 32px;
+}
+
+a:hover {
+	color: var(--light-text);
+}
+
+body {
+	padding: 32px 0;
+	font-family: var(--font-family);
+	color: var(--accent-text);
+	background-color: var(--gray);
+	transition: var(--transition);
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 var(--container-offset);
+	width: 100%;
+    max-width: calc(var(--container-width) + (var(--container-offset) * 2));
+}
+
+.title {
+	margin-bottom: 16px;
+	padding: 5px;
+	background-color: var(--white);
+	border: 1px solid var(--accent-text);
+	border-radius: 16px;
+	font-weight: 700;
+	font-size: clamp(16px, 1.5vw, 20px);
+	text-align: center;
+	text-transform: uppercase;
+	box-shadow: var(--box-shadow);
+}
+
+.btn {
+	margin-top: auto;
+    padding: 10px;
+    cursor: pointer;
+	color: var(--accent-text);
+	background-color: var(--white);
+	border-radius: 16px;
+	border: 1px solid var(--accent-text);
+	transition: var(--transition);
+	box-shadow: var(--box-shadow);
+}
+
+.btn:hover {
+	background-color: var(--light-text);
+	color: var(--white);
+}
+
+/* Плавный скролл */
+:target {
+    scroll-margin-top: 147.4px;
+}
+/* Если нужно поддерживать старые браузеры */
+@supports not (scroll-margin-top: 147.4px) {
+    :target::before {
+        content: "";
+        display: block;
+        height: 147.4px;
+        margin: -147.4px 0 0;
+    }
+}

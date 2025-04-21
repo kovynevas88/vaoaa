@@ -1,0 +1,106 @@
+.documents__content {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border-radius: 25px;
+    border: 1px solid var(--primary-blue);
+    padding: 20px 30px;
+    -webkit-box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+            box-shadow: 0px 10px 40px rgba(126, 155, 189, 0.35);
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+}
+
+.documents__title {
+    margin-bottom: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: clamp(10px, 20px, 30px);
+}
+
+.documents__reports {
+    margin-bottom: 30px;
+}
+
+.documents__reports-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    margin: 0;
+}
+
+.reports__title {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-weight: 400;
+    font-size: clamp(10px, 16px, 22px);
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-radius: 5px;
+    border-bottom: 2px dashed var(--primary-blue);
+}
+
+.documents__reports-item:not(:first-child) {
+    margin-bottom: 15px;
+}
+
+.documents__reports-link {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 5px 0;
+    font-weight: 400;
+    font-size: clamp(10px, 16px, 22px);
+    color: var(--gray-4);
+}
+
+.doc__title {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-weight: 400;
+    font-size: clamp(10px, 16px, 22px);
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-radius: 5px;
+    border-bottom: 2px dashed var(--primary-blue);
+}
+
+.doc__list {
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+}
+
+.doc__item:not(:first-child) {
+    margin-bottom: 15px;
+}
+
+.doc__link {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 5px 0;
+    font-weight: 400;
+    font-size: clamp(10px, 16px, 22px);
+    color: var(--gray-4);
+}
