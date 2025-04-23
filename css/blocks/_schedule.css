@@ -68,7 +68,7 @@
     display: none;
     background: var(--white);
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 	border: 1px solid var(--accent-text);
     box-shadow: var(--box-shadow);
 	transition: var(--transition);
@@ -97,14 +97,5 @@
 }
 
 @media (max-width: 768px) {
-    .schedule__tab__button {
-        flex: 1 1 100%;
-        font-size: 0.875rem;
-        padding: 0.625rem;
-    }
 
-
-    .group-info {
-        font-size: 0.875rem;
-    }
 }

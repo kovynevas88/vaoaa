@@ -84,9 +84,6 @@
 	background: rgba(0,0,0,0.8);
   }
 
-  .next { right: 10px; }
-  .prev { left: 10px; }
-
   @media (max-width: 768px) {
 	.slides-container {
 	  height: 50vh;

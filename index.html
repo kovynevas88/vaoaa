@@ -14,15 +14,15 @@
         <script src="./js/script.js" defer></script>
         <script src="./js/burger.js" defer></script>
         <script src="./js/transfer.js" defer></script>
-		<script src="./dropdown.js" defer></script>
+		<script src="./js/dropdown.js" defer></script>
         <script src="./js/groupNews.js" defer></script>
         <script src="./js/committeeNews.js" defer></script>
         <script src="./js/accordion.js" defer></script>
         <script src="./js/schedule.js" defer></script>
         <script src="./js/mobile-app.js" defer></script>
+		<script src="./js/documents.js" defer></script>
         <script src="./js/gallery.js" defer></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js" defer></script>
-
+	
     </head>
     <body>
         <header class="header">
@@ -100,7 +100,7 @@
                                             <a class="dropdown__content__item-link" href="#mobile">Мобильное приложение</a>
                                         </li>
                                         <li class="dropdown__content__item">
-                                            <a class="dropdown__content__item-link" href="./documents.html">Документы</a>
+                                            <a class="dropdown__content__item-link" href="#documents">Документы</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -748,5 +748,32 @@
 			</section>
 
         </main>
+
+		<div class="documents-modal" id="documentsModal">
+			<div class="documents-modal__content">
+				<span class="documents-modal__close" id="documentsCloseModal">
+					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+						<path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+					</svg>
+				</span>
+				<h2 class="title">Документы</h2>
+				<!-- Раздел Отчеты -->
+				<div class="documents-section">
+					<h3 class="documents-section__title">Отчеты</h3>
+					<div class="documents-list" id="reportsList">
+						<!-- Файлы будут добавлены через JavaScript -->
+					</div>
+				</div>
+
+				<!-- Раздел Документы -->
+				<div class="documents-section">
+					<h3 class="documents-section__title">Документы</h3>
+					<div class="documents-list" id="documentsList">
+						<!-- Файлы будут добавлены через JavaScript -->
+					</div>
+				</div>
+			</div>
+		</div>
+
     </body>
     </html>

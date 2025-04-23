@@ -2,6 +2,26 @@ document.addEventListener('DOMContentLoaded', function() {
     // Данные новостей
     const GroupNews = [
 		{
+			id: 56,
+			title: 'Большое спикерское собрание',
+			date: '22 апреля 2025',
+			excerpt: '25.04.2025 состоится собрание на группе "Новый день"',
+			image: '/img/news/meeting.jpg',
+			content: `
+			  <p class="modal__text__greeting" >Дорогие друзья!</p>
+			  <p>На группе АА <b>"Новый день"</b> состоится большое спикерское собрание:</p>
+			  <ul class="modal__text__list">
+				  <li class="modal__text__list-item"><b>Спикер:</b> Иван "Счастливый Алкоголик";</li>
+				  <li class="modal__text__list-item"><b>Срок трезвости:</b> 1 год и 10 месяцев;</li>
+				  <li class="modal__text__list-item"><b>Домашняя группа:</b> "Отца Мартина" (г.Санкт-Петербург);</li>
+				  <li class="modal__text__list-item"><b>Тема:</b> "До и после АА";</li>
+				  <li class="modal__text__list-item"><b>Дата и время:</b> пятница 07 февраля 2025 года в 19:30;</li>
+				  <li class="modal__text__list-item"><b>Адрес:</b> ул. Молдагуловой, д.12к3. Выставочный центр "Лотос".</li>
+			  </ul>
+			  <p>Приглашаем всех желающих получить неоценимый опыт!</p>
+			  <p class="modal__text__invitation">Добро пожаловать!</p>`
+		},
+		{
 			id: 55,
 			title: 'Большое спикерское собрание',
 			date: '12 апреля 2025',

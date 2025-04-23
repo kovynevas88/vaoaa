@@ -18,10 +18,16 @@
 .hero__content__text {
 	display: flex;
     flex-direction: column;
-	padding-left: 50px;
+	justify-content: space-evenly;
+	padding-left: 4rem;
     width: 100%;
-    gap: 50px;
-    font-size: clamp(1rem, 2.5vw, 2.25rem);
+	height: 100%;
+    gap: 4rem;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     font-weight: 700;
     color: var(--accent-text);
+}
+
+.hero__content__title {
+	margin: 0;
 }

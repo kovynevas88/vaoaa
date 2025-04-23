@@ -11,16 +11,15 @@
 }
 
 .accordion-item {
-	padding: 0.5rem 1rem;
+	padding: 1rem;
 	border: 1px solid var(--accent-text);
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	background-color: var(--white);
 	transition: var(--transition);
 	box-shadow: var(--box-shadow);
 }
 
 .accordion-header {
-	padding: 0.5rem 1rem;
 	border: none;
 	width: 100%;
 	text-align: left;
@@ -33,16 +32,6 @@
 	transition: var(--transition);
 	background-color: var(--white);
 	border-radius: 1rem;
-}
-
-.accordion-header:hover {
-	background-color: var(--light-text);
-	color: var(--white);
-}
-
-.accordion-header:focus {
-	background-color: var(--white);
-	color: var(--accent-text);
 }
 
 .accordion-header::after {
