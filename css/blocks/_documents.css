@@ -8,7 +8,20 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     overflow: auto;
-	padding: 2rem;
+    padding: 2rem;
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.documents-modal.active {
+	display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body.lock {
+	overflow: hidden;
 }
 
 .documents-modal__content {
@@ -22,6 +35,11 @@
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
     transition: var(--transition);
+	transform: translateY(-50px);
+}
+
+.documents-modal.active .documents-modal__content {
+    transform: translateY(0);
 }
 
 .documents-modal__close {
@@ -59,6 +77,7 @@
 }
 
 .document-item {
+	position: relative;
     display: flex;
     align-items: center;
     padding: 0.5rem;
@@ -68,13 +87,20 @@
 	cursor: pointer;
 }
 
-.document-item:hover {
-	color: var(--light-text);
+.document-item::after {
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
 
-.document-item:hover .download-btn {
-	color: var(--white);
-	background-color: var(--light-text);
+.document-item:hover {
+	color: var(--light-text);
+	transform: translateY(-2px);
+	border: 1px solid var(--light-text);
 }
 
 .document-icon {
@@ -93,19 +119,4 @@
 .document-size {
     font-size: 1rem;
     color: #777;
-}
-
-.download-btn {
-    background: none;
-    border: 1px solid var(--accent-text);
-    color: var(--accent-text);
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.download-btn:hover {
-    background-color: var(--light-text);
-	color: var(--white);
 }

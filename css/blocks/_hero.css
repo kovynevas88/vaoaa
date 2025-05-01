@@ -26,6 +26,7 @@
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     font-weight: 700;
     color: var(--accent-text);
+	box-shadow: var(--box-shadow);
 }
 
 .hero__content__title {

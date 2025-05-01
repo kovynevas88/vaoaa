@@ -1,43 +1,59 @@
 // Модальное окно для документов
 document.addEventListener('DOMContentLoaded', function() {
-	// Элементы модального окна
-	const documentsModal = document.getElementById('documentsModal');
-	const documentsCloseModal = document.getElementById('documentsCloseModal');
-	const documentsLink = document.querySelector('.dropdown__content__item-link[href="#documents"]');
+    const documentsModal = document.getElementById('documentsModal');
+    const closeBtn = document.getElementById('documentsCloseModal');
+    const documentsLinks = document.querySelectorAll('.dropdown-menu__item-link[href="#documents"]');
 
-	// Открытие модального окна при клике на ссылку "Документы"
-	if (documentsLink) {
-		documentsLink.addEventListener('click', function(e) {
-			e.preventDefault();
-			documentsModal.style.display = 'block';
-			loadDocuments();
-		});
-	}
+	// Обработчики открытия модального окна
+    documentsLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            showDocumentsModal();
+        });
+    });
+
+	// Функции управления модальным окном
+    function showDocumentsModal() {
+        documentsModal.classList.add('active');
+        document.body.classList.add('lock');
+        loadDocuments();
+    }
+
+	function closeDocumentsModal() {
+        documentsModal.classList.remove('active');
+        document.body.classList.remove('lock');
+    }
 
 	// Закрытие модального окна
-	documentsCloseModal.addEventListener('click', function() {
-		documentsModal.style.display = 'none';
-	});
-
-	// Закрытие при клике вне модального окна
-	window.addEventListener('click', function(event) {
-		if (event.target == documentsModal) {
-			documentsModal.style.display = 'none';
-		}
-	});
+    closeBtn.addEventListener('click', closeDocumentsModal);
+    documentsModal.addEventListener('click', (e) => {
+        if(e.target === documentsModal) closeDocumentsModal();
+    });
 
 	// Функция для загрузки документов
 	function loadDocuments() {
-		// Здесь будет AJAX запрос к серверу для получения списка файлов
-		// В этом примере используем mock данные
-
-		// Mock данные - в реальном приложении замените на запрос к серверу
 		const mockDocuments = {
 			reports: [
-				{ name: 'Отчет c 18.08 по 30.10 2024г.docx', size: '13 KB', path: '/download/documents/reports/report-october-december.docx' },
-				{ name: 'Отчет c 18.08 по 30.10 2024г.docx', size: '19 KB', path: '/download/documents/reports/report-august-october.docx' },
-				{ name: 'Отчет за март-июнь 2024г.docx', size: '18 KB', path: '/download/documents/reports/report-march-june.docx' },
-				{ name: 'Отчет казначея комитета по 5-ой.pdf', size: '104 KB', path: '/download/documents/reports/assignment-report.pdf' }
+				{
+					name: 'Отчет c 18.08 по 30.10 2024г.docx',
+					size: '13 KB',
+					path: '/download/reports/report-october-december.docx'
+				},
+				{
+					name: 'Отчет c 18.08 по 30.10 2024г.docx',
+					size: '19 KB',
+					path: '/download/reports/report-august-october.docx'
+				},
+				{
+					name: 'Отчет за март-июнь 2024г.docx',
+					size: '18 KB',
+					path: '/download/reports/report-march-june.docx'
+				},
+				{
+					name: 'Отчет казначея комитета по 5-ой.pdf',
+					size: '104 KB',
+					path: '/download/reports/assignment-report.pdf'
+				}
 			],
 			documents: [
 				{ name: 'В Управу Вешняки.jpeg', size: '2.5 MB', path: '/download/documents/vUpravuVeshnyaki.jpg' },
@@ -64,50 +80,49 @@ document.addEventListener('DOMContentLoaded', function() {
 			]
 		};
 
-		// Очищаем списки
-		document.getElementById('reportsList').innerHTML = '';
-		document.getElementById('documentsList').innerHTML = '';
+		// Очистка списков
+        ['reportsList', 'documentsList'].forEach(id => {
+            document.getElementById(id).innerHTML = '';
+        });
 
-		// Добавляем отчеты
-		mockDocuments.reports.forEach(doc => {
-			addDocumentItem(doc, 'reportsList');
-		});
-
-		// Добавляем документы
-		mockDocuments.documents.forEach(doc => {
-			addDocumentItem(doc, 'documentsList');
-		});
+		// Добавление элементов
+        mockDocuments.reports.forEach(doc => addDocumentItem(doc, 'reportsList'));
+        mockDocuments.documents.forEach(doc => addDocumentItem(doc, 'documentsList'));
 	}
 
 	// Функция для добавления элемента документа в список
-	function addDocumentItem(doc, listId) {
-		const list = document.getElementById(listId);
-		const fileExtension = doc.name.split('.').pop().toLowerCase();
-		const icon = getFileIcon(fileExtension);
+    function addDocumentItem(doc, listId) {
+        const list = document.getElementById(listId);
+        const fileExtension = doc.name.split('.').pop().toLowerCase();
 
-		const item = document.createElement('div');
-		item.className = 'document-item';
-		item.innerHTML = `
-			<div class="document-icon">${icon}</div>
-			<div class="document-info">
-				<div class="document-name">${doc.name}</div>
-				<div class="document-size">${doc.size}</div>
-			</div>
-			<button class="download-btn" onclick="downloadFile('${doc.path}', '${doc.name}')">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-					<polyline points="7 10 12 15 17 10"></polyline>
-					<line x1="12" y1="15" x2="12" y2="3"></line>
-				</svg>
-			</button>
-		`;
+        const item = document.createElement('div');
+        item.className = 'document-item';
+        item.innerHTML = `
+            <a href="${doc.path}" download="${doc.name}" class="document-link">
+                <div class="document-icon">${getFileIcon(fileExtension)}</div>
+                <div class="document-info">
+                    <div class="document-name">${doc.name}</div>
+                    <div class="document-size">${doc.size}</div>
+                </div>
+            </a>
+        `;
 
-		list.appendChild(item);
-	}
+        list.appendChild(item);
+
+        // Обработчик клика на весь элемент
+        item.addEventListener('click', function(e) {
+            if (!e.target.closest('a')) { // Не перехватывать клики на ссылке
+                const link = this.querySelector('a');
+                if (link) link.click();
+            }
+        });
+
+        list.appendChild(item);
+    }
 
 	// Функция для получения иконки в зависимости от типа файла
-	function getFileIcon(extension) {
-		const icons = {
+	function getFileIcon(ext) {
+        const icons = {
 			pdf: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M10 11v5"></path><path d="M14 11v3"></path><rect x="6" y="11" width="2" height="4"></rect></svg>',
 			doc: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>',
 			docx: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>',
@@ -115,18 +130,25 @@ document.addEventListener('DOMContentLoaded', function() {
 			xlsx: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M16 13H8"></path><path d="M16 17H8"></path><path d="M10 9H8"></path></svg>',
 			default: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9b59b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>'
 		};
-
-		return icons[extension] || icons.default;
-	}
+        return icons[ext] || icons.default;
+    }
 });
 
-// Функция для скачивания файла (глобальная)
-function downloadFile(path, filename) {
-	// В реальном приложении это может быть ссылка на сервер
-	const link = document.createElement('a');
-	link.href = path;
-	link.download = filename;
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeChild(link);
-}
+	// Функция для скачивания файла (глобальная)
+	window.downloadFile = async function(path, filename) {
+		try {
+			// Прямое скачивание без fetch
+			const link = document.createElement('a');
+			link.href = path;
+			link.download = filename;
+			link.style.display = 'none';
+
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+
+		} catch (error) {
+			console.error('Ошибка скачивания:', error);
+			alert('Ошибка при скачивании файла');
+		}
+	};

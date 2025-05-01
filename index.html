@@ -9,20 +9,19 @@
         <link rel="shortcut icon" href="img/aa-favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/media.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 		<script src="https://cdn.jsdelivr.net/npm/transfer-elements@1.0.7" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" defer></script>
         <script src="./js/script.js" defer></script>
-        <script src="./js/burger.js" defer></script>
         <script src="./js/transfer.js" defer></script>
-		<script src="./js/dropdown.js" defer></script>
         <script src="./js/groupNews.js" defer></script>
         <script src="./js/committeeNews.js" defer></script>
         <script src="./js/accordion.js" defer></script>
         <script src="./js/schedule.js" defer></script>
         <script src="./js/mobile-app.js" defer></script>
 		<script src="./js/documents.js" defer></script>
-        <script src="./js/gallery.js" defer></script>
-	
+
     </head>
     <body>
         <header class="header">
@@ -48,7 +47,7 @@
                             </ul>
                         </div>
                         <div class="header__burger">
-							<button class="header__burger__button" aria-label="Меню" aria-expanded="false">
+							<button class="header__burger__button" aria-label="Меню">
 								<span class="header__burger__line"></span>
 								<span class="header__burger__line"></span>
 								<span class="header__burger__line"></span>
@@ -59,8 +58,8 @@
                         <nav class="header__nav">
 							<img class="header__logo-mobile" src="./img/logo/logo.svg" alt="Логотип АА ВАО">
                             <ul class="header__nav__list">
-                                <li class="header__nav__item dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <a href="#" class="header__nav__link" tabindex="0">
+                                <li class="dropdown-parent">
+                                    <a href="#" class="dropdown-toggle">
                                         Новости
                                         <span class="dropdown__arrow">
                                             <svg class="dropdown__arrow-icon" viewBox="0 0 24 24" width="16" height="16">
@@ -68,26 +67,26 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <ul class="dropdown__content" role="menu">
-                                        <li class="dropdown__content__item">
-                                            <a class="dropdown__content__item-link" href="#news-group">Жизнь групп АА&nbsp;Востока</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-menu__item">
+                                            <a class="dropdown-menu__item-link" href="#news-group">Жизнь групп АА&nbsp;Востока</a>
                                         </li>
-                                        <li class="dropdown__content__item">
-                                            <a class="dropdown__content__item-link" href="#news-committee">Комитет по&nbsp;5&nbsp;традиции &laquo;Восток&raquo;</a>
+                                        <li class="dropdown-menu__item">
+                                            <a class="dropdown-menu__item-link" href="#news-committee">Комитет по&nbsp;5&nbsp;традиции &laquo;Восток&raquo;</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="header__nav__item">
+                                <li class="dropdown-parent">
                                     <a href="#beginner" class="header__nav__link">Новичкам</a>
                                 </li>
-                                <li class="header__nav__item">
+                                <li class="dropdown-parent">
                                     <a href="#gallery" class="header__nav__link">Галерея</a>
                                 </li>
-                                <li class="header__nav__item">
+                                <li class="dropdown-parent">
                                     <a href="#schedule" class="header__nav__link">Расписание</a>
                                 </li>
-                                <li class="header__nav__item dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <a href="#" class="header__nav__link" tabindex="0">
+                                <li class="dropdown-parent">
+                                    <a href="#" class="dropdown-toggle">
                                         Скачать
                                         <span class="dropdown__arrow">
                                             <svg class="dropdown__arrow-icon" viewBox="0 0 24 24" width="16" height="16">
@@ -95,12 +94,12 @@
                                             </svg>
                                         </span>
                                     </a>
-                                    <ul class="dropdown__content" role="menu">
-                                        <li class="dropdown__content__item">
-                                            <a class="dropdown__content__item-link" href="#mobile">Мобильное приложение</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-menu__item">
+                                            <a class="dropdown-menu__item-link" href="#mobile">Мобильное приложение</a>
                                         </li>
-                                        <li class="dropdown__content__item">
-                                            <a class="dropdown__content__item-link" href="#documents">Документы</a>
+                                        <li class="dropdown-menu__item">
+                                            <a class="dropdown-menu__item-link" href="#documents">Документы</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -724,10 +723,11 @@
                                   </svg>
                             </div>
                             <h3 class="mobile__app__title">Для Android</h3>
-                            <span>Текущая версия: 1.9.3 от 19.02.2025</span>
+                            <span>Текущая версия: 2.0.0 от 28.04.2025</span>
                             <div class="mobile__app__content">
                                 <ul class="mobile__installation__steps">
-                                    <li>✓ Исправлена ошибка сохранения рабочего собрания казначея</li>
+                                    <li>✓ Добавлено меню установки даты трезвости и просмотра срока трезвости</li>
+									<li>✓ Адаптация под меньшие экраны</li>
                                 </ul>
                             </div>
                             <button>
@@ -741,17 +741,20 @@
                 </div>
             </section>
 
-            <section class="gallery" id="gallery">
+            <!-- <section class="gallery section" id="gallery">
 				<div class="container">
+				  <h2 class="title">Галерея</h2>
+				  <div class="gallery__container">
 
+
+				  </div>
 				</div>
-			</section>
-
+			</section> -->
         </main>
 
 		<div class="documents-modal" id="documentsModal">
 			<div class="documents-modal__content">
-				<span class="documents-modal__close" id="documentsCloseModal">
+				<span class="documents-modal__close" id="documentsCloseModal" aria-label="Закрыть" title="Закрыть">
 					<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 352 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
 						<path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
 					</svg>
